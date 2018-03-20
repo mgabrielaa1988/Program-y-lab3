@@ -19,8 +19,6 @@ foreach($operadores as $operador)
         case '*':
             echo "Resultado: " . ($op1 * $op2);
             break;
-            default:
-            break;
 
     }
     echo "</br>";
