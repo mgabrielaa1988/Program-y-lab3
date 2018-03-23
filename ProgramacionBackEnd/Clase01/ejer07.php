@@ -1,6 +1,7 @@
 <?php 
 $dia =(int)date("d");
-$mes =(int)date("m");
+$mes =date("m");
+
 
 if($mes >= 9 && $mes <= 11 )
 echo "Es primavera </br>";
