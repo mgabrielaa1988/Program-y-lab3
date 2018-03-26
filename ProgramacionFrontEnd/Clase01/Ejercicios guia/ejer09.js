@@ -1,9 +1,12 @@
 "use strict";
-function Ejercicio09(numero) {
+exports.__esModule = true;
+var ejer06_1 = require("./ejer06");
+var ejer08_1 = require("./ejer08");
+function PotenciaFactorial(numero) {
     if (numero > 0) {
+        console.log(ejer08_1.Factorial(numero));
     }
     else
-        console.log(Ejercicio06(numero));
+        console.log(ejer06_1.Potencia(numero));
 }
-Ejercicio09(4);
-//# sourceMappingURL=ejer09.js.map
+PotenciaFactorial(-2);

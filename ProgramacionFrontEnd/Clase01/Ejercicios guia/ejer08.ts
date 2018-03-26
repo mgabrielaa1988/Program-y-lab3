@@ -1,3 +1,4 @@
+export {Factorial};
 function Factorial(numero :number)
 {
     var i : number=1;
@@ -8,4 +9,3 @@ function Factorial(numero :number)
     }
     console.log(resultado);
 }
-Factorial(4);

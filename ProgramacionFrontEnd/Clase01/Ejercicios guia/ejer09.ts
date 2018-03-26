@@ -1,17 +1,17 @@
-function Ejercicio09(numero:number)
+import { Potencia } from "./ejer06";
+
+import { Factorial } from "./ejer08";
+
+function PotenciaFactorial(numero:number)
 {
     if(numero>0)
     {
-
+        console.log(Factorial(numero));
     }
-    
     else
-    console.log(Ejercicio06(numero));
+    console.log(Potencia(numero));
 }
 
-function Factorial()
-{
 
-}
-
+PotenciaFactorial(-2);
 

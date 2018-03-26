@@ -1,9 +1,9 @@
 "use strict";
-function Ejercicio06(numero) {
+exports.__esModule = true;
+function Potencia(numero) {
     return Math.pow(numero, 3);
 }
+exports.Potencia = Potencia;
 function Mostrar() {
-    console.log(Ejercicio06(2));
+    console.log(Potencia(2));
 }
-Mostrar();
-//# sourceMappingURL=ejer06.js.map

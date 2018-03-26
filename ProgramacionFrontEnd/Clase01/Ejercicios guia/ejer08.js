@@ -1,4 +1,5 @@
 "use strict";
+exports.__esModule = true;
 function Factorial(numero) {
     var i = 1;
     var resultado = 1;
@@ -7,5 +8,4 @@ function Factorial(numero) {
     }
     console.log(resultado);
 }
-Factorial(4);
-//# sourceMappingURL=ejer08.js.map
+exports.Factorial = Factorial;
