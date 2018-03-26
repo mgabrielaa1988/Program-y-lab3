@@ -1,4 +1,4 @@
-function Ejercicio09(numero:number,)
+function Ejercicio09(numero:number)
 {
     if(numero>0)
     {
@@ -8,6 +8,10 @@ function Ejercicio09(numero:number,)
     else
     console.log(Ejercicio06(numero));
 }
-Ejercicio09(4);
+
+function Factorial()
+{
+
+}
 
 

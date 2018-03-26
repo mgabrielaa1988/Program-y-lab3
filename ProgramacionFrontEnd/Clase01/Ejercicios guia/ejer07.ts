@@ -1,10 +1,21 @@
-function NumerosPrimos()
+function NumerosPrimos():void
 {
-    var numero=0;
-    var i:number;
-    var numerosPrimos:number=0;
-    for(i=0;numerosPrimos<20;i++)
+    var contadorPrimos : number = 0;
+    for(var i : number = 2; contadorPrimos<=20;i++)
     {
-        if(i)
+        for(var k : number = 2; k<i/2;k++)
+        {
+            if(i%k==0)
+            {
+                break;
+            }
+        }
+        if(i%k!=0 || i==2)
+        {
+            contadorPrimos++;
+            console.log(i + "\n");
+        }
     }
-}
+} 
+
+NumerosPrimos();
