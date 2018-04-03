@@ -7,7 +7,6 @@
             {
                 echo "Potencia de".$i." a la ".$j."= ".pow($i,$j)."</br>";
             }
-            
         }
     }
   Potencia();  

@@ -78,33 +78,19 @@ class Triangulo extends FiguraGeometrica
     }
     protected function CalcularDatos()
     {
-        $this->_perimetro=0;
+        $this->_perimetro=10;
         $this->_superficie=($this->_altura*$this->_base)/2;
     }
     public function Dibujar()
     {
-        
-        for($alturaDibujo=1;$alturaDibujo<=$this->_altura;$alturaDibujo++)
-        {
-            for($baseDibujo=1;$baseDibujo<=$this->_base;$baseDibujo++)
-            {
-                $contadorEspacios=$this->_base-1;
-                if($baseDibujo==1)
-                {
-                    for($espacios=$contadorEspacios;$contadorEspacios==0;$contadorEspacios--)
-                    {    
-                         echo "&nbsp";
-                    }
-                }
-                echo "*";
-                
-              
-
-               
-            }
-            $contadorEspacios--;
-            echo "</br>";
-        }
+       for($i=0;$i<$this->_perimetro;$i++)
+       {
+           for($j=0;$j<$this->_perimetro-$i-1;$j++)
+               print("&nbsp;");
+            for($j=0;$j<=$i;$j++)
+                print("*");
+            print("</br>");
+       }
     }
 
     public function ToString()
@@ -114,7 +100,7 @@ class Triangulo extends FiguraGeometrica
 }
 
 $rectangulo=new Rectangulo(2,4);
-$triangulo=new Triangulo(6,10);
+$triangulo=new Triangulo(6,6);
 $rectangulo->SetColor("Gris");
 $triangulo->SetColor("Rojo");
 echo "Rectangulo: " . $rectangulo->ToString()."</br>";
