@@ -21,8 +21,6 @@ function AdministrarValidaciones():boolean
     const dni:number=parseInt((<HTMLInputElement>document.getElementById("txtDni")).value);
     const sueldo:number=parseInt((<HTMLInputElement>document.getElementById("txtSueldo")).value);
     const maximo:number=ObtenerSueldoMaximo(turno);
-    if(turno=="" || maximo==0)
-        return false;
     if(!ValidarCamposVacios("txtDni") || !ValidarRangoNumerico(dni,1000000,55000000))
         return false;
     if(!ValidarCamposVacios("txtApellido"))
@@ -35,7 +33,11 @@ function AdministrarValidaciones():boolean
         return false;
     if(!ValidarCamposVacios("txtSueldo") || !ValidarRangoNumerico(sueldo,8000,maximo))
         return false;
-
+    if(turno=="")
+    {
+        alert("No se selecciono ningun turno.");
+        return false;
+    }
 
 
     return true;
@@ -84,10 +86,7 @@ function ObtenerTurnoSeleccionado():string
     else if((<HTMLInputElement>document.getElementById("tNoche")).checked)
         return "Noche";
     else
-    {
-        alert("No seleccionó ningun turno.");
         return "";
-    }
 }
 function ObtenerSueldoMaximo(turno:string):number
 {
