@@ -14,7 +14,7 @@ $fabrica->AgregarEmpleado($empTres);
 $fabrica->AgregarEmpleado($empRepetido);
 echo "Suma de sueldos: ".$fabrica->CalcularSueldos()."</br>";
 echo $fabrica->ToString()."</br>";
-if($fabrica->EliminarEmpleado($empRepetido))
+if($fabrica->EliminarEmpleado($empUno))
 {
     echo "Empleado eliminado con exito </br>";
 }

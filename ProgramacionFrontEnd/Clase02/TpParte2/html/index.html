@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML 5 - Formulario Alta Empleado</title>
+    <script src="../javascript/index.js"></script>
+</head>
+<body>
+    <form onsubmit="AdministrarValidaciones()" action="GET">
+        <h2>Alta de empleados</h2>
+        
+        <table align="center">
+            <tr>
+                <td><h4>Datos personales</h4></td>
+            </tr>
+            <tr>
+                <td colspan="2"><hr></td>
+            </tr>
+            
+            <tr>
+                <td>DNI:</td>
+                <td><input type="number" id="txtDni"></td>
+            </tr>
+            <tr>
+                <td>Apellido:</td>
+                <td><input type="text" id="txtApellido"></td>
+            </tr>
+            <tr>
+                <td>Nombre</td>
+                <td><input type="text" id="txtNombre"></td>
+               
+            </tr>
+            <tr>
+                <td>Sexo</td>
+                <td>
+                    <select id="selGenero">
+                        <option value="---">Seleccione</option>
+                        <option value="M">Masculino</option>
+                        <option value="F">Femenino</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td><h4>Datos Laborales</h4></td>
+            </tr>
+            <tr>
+                <td colspan="2"><hr></td>
+            </tr>
+            <tr>
+                <td>Legajo</td>
+                <td><input type="number" id="txtLegajo"></td>
+            </tr>
+            <tr>
+                <td>Sueldo</td>
+                <td><input type="number" id="txtSueldo" step="500"></td>
+            </tr>
+            <tr>
+                <td>Turno</td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="tManiana" name="turnos">Mañana</td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="tTarde" name="turnos">Tarde</td>
+            </tr>
+            <tr>
+                <td><input type="radio" id="tNoche" name="turnos">Noche</td>
+            </tr>
+            <tr>
+                <td colspan="2"><hr></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="reset" value="Limpiar"></td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2"><input type="submit" value="Enviar"></td>
+            </tr>
+        </table>
+    </form>
+    
+</body>
+</html>
