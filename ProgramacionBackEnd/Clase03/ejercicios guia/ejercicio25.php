@@ -24,31 +24,32 @@ function LeerNumPalabras($ruta)
         else
         $masDeCuatro++;
     }
-    fclose($archivo);
-    echo "
-    <table border=241> 
-    <caption> Tabla Luki </caption>
-    <tr>
-    <theader>
-    <td>Una</td>
-    <td>Dos</td>
-    <td>Tres</td>
-    <td>Cuatro</td>
-    <td>Mas de cuatro</td>
-    </theader>
-    </tr>
-    <tr>
-    <td>".$uno." </td>
-    <td>".$dos." </td>
-    <td>".$tres." </td>
-    <td>".$cuatro." </td>
-    <td>".$masDeCuatro." </td>
-    </tr>
+        fclose($archivo);
+        echo "
+        <table border=241> 
+                        <caption> Tabla Luki </caption>
+        <tr>
+        <theader>
+        <td>Una</td>
+        <td>Dos</td>
+        <td>Tres</td>
+        <td>Cuatro</td>
+        <td>Mas de cuatro</td>
+        </theader>
+        </tr>
+        <tr>
+        <td>".$uno." </td>
+        <td>".$dos." </td>
+        <td>".$tres." </td>
+        <td>".$cuatro." </td>
+        <td>".$masDeCuatro." </td>
+        </tr>
 
-    </table>";
+        </table>";
 
-}
-LeerNumPalabras("palabras.txt");
+        }
+    console.log("holi");
+    LeerNumPalabras("palabras.txt");
 
 
 ?>
