@@ -1,9 +1,10 @@
-Juan-Massa-40675300-Masculino-310-21000-tNoche
+Carlos-Alvarez-20300200-Masculino-358-21000-tTarde
 
-Carlos-Alvarez-20300200-Masculino-358-21000-tTarde
+Jota-Hadrian-40675600-Masculino-340-18000-tManiana
 
-Jota-Hadrian-40675600-Masculino-340-18000-tManiana
+Menos-Masso-40000000-Femenino-200-24000-tNoche
 
-Ahre-Massa-40675318-Masculino-549-20000-tManiana
+agro-oasud-40200500-Femenino-264-20000-tNoche
 
-Ahre-Massa-40675318-Masculino-549-20000-tManiana
+ahre-oasud-40200500-Femenino-264-20000-tNoche
+
