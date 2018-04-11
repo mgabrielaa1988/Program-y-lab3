@@ -1,7 +1,6 @@
 <?php
 require_once("php/Fabrica.php");
 require_once("php/Empleado.php");
-
     $fabrica=new Fabrica("La de vivir",7);
     $fabrica->TraerDeArchivo();
     if(isset($_POST['nombre']))
@@ -10,14 +9,14 @@ require_once("php/Empleado.php");
         if($fabrica->AgregarEmpleado($empleadoForm))
         {
             $fabrica->GuardarEnArchivo();
-            echo "<a href=\"mostrar.php\">Mostrar</a>";
+            echo "Empleado guardado perfectamente </br><a href=\"mostrar.php\">Mostrar</a>";
         }
         else
         {
             echo "No pudo Agregarse a la fabrica"."<a href=\"index.html\">Volver</a>";
         }
     }
-    
+echo "</br><a href=\"index.html\">Volver</a>";
 
     
 

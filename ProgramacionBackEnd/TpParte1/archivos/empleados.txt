@@ -1,10 +1,6 @@
-Carlos-Alvarez-20300200-Masculino-358-21000-tTarde
+Lucas-Massa-40675318-Masculino-300-24000-tNoche
 
-Jota-Hadrian-40675600-Masculino-340-18000-tManiana
+Santo-Maso-40675312-Masculino-400-23000-tNocheSanto
 
-Menos-Masso-40000000-Femenino-200-24000-tNoche
-
-agro-oasud-40200500-Femenino-264-20000-tNoche
-
-ahre-oasud-40200500-Femenino-264-20000-tNoche
-
+Santo-Bonazi-40000200-Femenino-275-22000-tNoche
+Martina-Albelorio-40000700-Femenino-198-23500-tNoche

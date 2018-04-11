@@ -1,5 +1,5 @@
 <?php
-require_once "administracion.php";
+require_once "php/Empleado.php";
 
 $archivo=fopen("archivos/empleados.txt","r");
 $empleados=array();
@@ -15,12 +15,11 @@ while(!feof($archivo))
     
 }
 fclose($archivo);
-echo "</br>";
 foreach($empleados as $emp)
 {
     echo "</br>".$emp->ToString()."<a href=\"eliminar.php/?legajo=".$emp->GetLegajo()."\">Eliminar</a>";;
 }
 
-echo "<a href=\"index.html\">Volver</a>";
+echo "</br><a href=\"index.html\">Volver</a>";
 
 ?>

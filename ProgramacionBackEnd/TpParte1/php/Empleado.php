@@ -35,6 +35,10 @@ class Empleado extends Persona
     {
        return parent::ToString()."-".$this->_legajo."-".$this->_sueldo."-".$this->_turno; 
     }
+    public function __ToString()
+    {
+        return $this->ToString();
+    }
 
 }
 ?>

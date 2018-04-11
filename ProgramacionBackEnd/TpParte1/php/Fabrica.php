@@ -37,14 +37,15 @@ class Fabrica implements IArchivo
     public function EliminarEmpleado($emp)
     {
         $indice=array_search($emp,$this->_empleados);
-        if($indice>=0)
+        if($indice===false)
         {
-            unset($this->_empleados[$indice]);
-            return true;
+            return false;
         }
         else
         {
-            return false;
+            unset($this->_empleados[$indice]);
+            return true;
+            
         }
     }
     private function EliminarEmpleadoRepetido()
