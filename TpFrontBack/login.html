@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>HTML 5 - Formulario login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="javascript/validaciones.js"></script>
+</head>
+
+<body>
+
+    <h2>Login</h2>
+
+    <form method="POST">
+        <table align="center">
+            <tr>
+                <td>
+                    <h4>Ingreso de credenciales</h4>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td>DNI:</td>
+                <td>
+                    <input type="text" id="txtDni">
+                </td>
+                <td>
+                    <span style="display: none" id="errDni">*</span>
+                </td>
+            </tr>
+            <tr>
+                <td>Apellido:</td>
+                <td>
+                    <input type="text" id="txtApellido">
+                </td>
+                <td>
+                    <span style="display:none" id="errApellido">*</span>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <hr>
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="reset" value="Limpiar">
+                </td>
+            </tr>
+            <tr>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Enviar" onclick="return AdministrarValidacionesLogin()">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+
+</html>

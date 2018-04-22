@@ -1,3 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML5-Listado de empleados</title>
+</head>
+<body>
+    <h2>Listado de Empleados</h2>
+    <table align="center">
+        <tr>
+            <td>
+                <h4>Info</h4>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <hr>
+            </td>
+        </tr>
+  
+
+    <!-- EMPIEZA PHP -->
 <?php
 require_once "php/Empleado.php";
 
@@ -17,9 +40,32 @@ while(!feof($archivo))
 fclose($archivo);
 foreach($empleados as $emp)
 {
-    echo "</br>".$emp->ToString()."<a href=\"eliminar.php/?legajo=".$emp->GetLegajo()."\">Eliminar</a>";;
+    ?> 
+    <tr>
+        <td>
+            <?php echo $emp->ToString() ?>
+        </td>
+        <td>
+            <a href="eliminar.php/?legajo=<?php echo $emp->GetLegajo()?>">Eliminar</a>
+        </td>
+    </tr>
+<?php
 }
-
-echo "</br><a href=\"index.html\">Volver</a>";
-
 ?>
+<!-- TERMINA PHP-->
+    <tr>
+        <td colspan="2">
+            <hr>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <a href="index.html">Alta de empleados</a>
+        </td>
+    </tr>
+</table>
+
+
+</body>
+</html>

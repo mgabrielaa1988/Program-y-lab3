@@ -1,34 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>HTML 5 - Formulario Alta Empleado</title>
     <script src="javascript/validaciones.js"></script>
 </head>
+
 <body>
     <form action="administracion.php" method="POST">
         <h2>Alta de empleados</h2>
-        
+
         <table align="center">
             <tr>
-                <td><h4>Datos personales</h4></td>
+                <td>
+                    <h4>Datos personales</h4>
+                </td>
             </tr>
             <tr>
-                <td colspan="2"><hr></td>
+                <td colspan="2">
+                    <hr>
+                </td>
             </tr>
-            
+
             <tr>
                 <td>DNI:</td>
-                <td><input type="number" id="txtDni" name="dni"></td>
+                <td>
+                    <input type="number" id="txtDni" name="dni">
+                </td>
+                <td>
+                    <span style="display:none" id="errDni">*</span>
+                </td>
             </tr>
             <tr>
                 <td>Apellido:</td>
-                <td><input type="text" id="txtApellido" name="apellido"></td>
+                <td>
+                    <input type="text" id="txtApellido" name="apellido">
+                </td>
+                <td>
+                    <span style="display:none" id="errApellido">*</span>
+                </td>
             </tr>
             <tr>
                 <td>Nombre</td>
-                <td><input type="text" id="txtNombre" name="nombre"></td>
-               
+                <td>
+                    <input type="text" id="txtNombre" name="nombre">
+                </td>
+                <td>
+                    <span style="display:none" id="errNombre">*</span>
+                </td>
+
             </tr>
             <tr>
                 <td>Sexo</td>
@@ -39,44 +60,71 @@
                         <option value="Femenino">Femenino</option>
                     </select>
                 </td>
+                <td>
+                    <span style="display:none" id="errGenero">*</span>
+                </td>
             </tr>
             <tr>
-                <td><h4>Datos Laborales</h4></td>
+                <td>
+                    <h4>Datos Laborales</h4>
+                </td>
             </tr>
             <tr>
-                <td colspan="2"><hr></td>
+                <td colspan="2">
+                    <hr>
+                </td>
             </tr>
             <tr>
                 <td>Legajo</td>
-                <td><input type="number" id="txtLegajo" name="legajo"></td>
+                <td>
+                    <input type="number" id="txtLegajo" name="legajo">
+                </td>
+                <td>
+                    <span style="display:none" id="errLegajo">*</span>
+                </td>
             </tr>
             <tr>
                 <td>Sueldo</td>
-                <td><input type="number" id="txtSueldo" name="sueldo" step="500"></td>
+                <td>
+                    <input type="number" id="txtSueldo" name="sueldo" step="500">
+                </td>
+                <td>
+                    <span style="display:none" id="errSueldo">*</span>
+                </td>
             </tr>
             <tr>
                 <td>Turno</td>
             </tr>
             <tr>
-                <td><input type="radio" id="tManiana" value="tManiana" name="turnos">Mañana</td>
+                <td>
+                    <input type="radio" id="tManiana" value="tManiana" name="turnos">Mañana</td>
             </tr>
             <tr>
-                <td><input type="radio" id="tTarde" value="tTarde" name="turnos">Tarde</td>
+                <td>
+                    <input type="radio" id="tTarde" value="tTarde" name="turnos">Tarde</td>
             </tr>
             <tr>
-                <td><input type="radio" id="tNoche" value="tNoche" name="turnos">Noche</td>
+                <td>
+                    <input type="radio" id="tNoche" value="tNoche" name="turnos">Noche</td>
             </tr>
             <tr>
-                <td colspan="2"><hr></td>
+                <td colspan="2">
+                    <hr>
+                </td>
             </tr>
             <tr>
-                <td align="center" colspan="2"><input type="reset" value="Limpiar"></td>
+                <td align="center" colspan="2">
+                    <input type="reset" value="Limpiar">
+                </td>
             </tr>
             <tr>
-                <td align="center" colspan="2"><input type="submit" value="Enviar" onclick="return AdministrarValidaciones()"></td>
+                <td align="center" colspan="2">
+                    <input type="submit" value="Enviar" onclick="return AdministrarValidaciones()">
+                </td>
             </tr>
         </table>
     </form>
-    
+
 </body>
+
 </html>
