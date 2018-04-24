@@ -13,7 +13,7 @@
 
     <h2>Login</h2>
 
-    <form method="POST">
+    <form action="./php/verificarUsuario.php" method="POST">
         <table align="center">
             <tr>
                 <td>
@@ -28,7 +28,7 @@
             <tr>
                 <td>DNI:</td>
                 <td>
-                    <input type="text" id="txtDni">
+                    <input type="text" id="txtDni" name='dni'>
                 </td>
                 <td>
                     <span style="display: none" id="errDni">*</span>
@@ -37,7 +37,7 @@
             <tr>
                 <td>Apellido:</td>
                 <td>
-                    <input type="text" id="txtApellido">
+                    <input type="text" id="txtApellido" name='apellido'>
                 </td>
                 <td>
                     <span style="display:none" id="errApellido">*</span>

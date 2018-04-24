@@ -37,6 +37,10 @@ function AdministrarValidaciones() {
         AdministrarSpanError("errSueldo", false);
     else
         AdministrarSpanError("errSueldo", true);
+    if (document.getElementById('fileFoto').value == "")
+        AdministrarSpanError("errFoto", false);
+    else
+        AdministrarSpanError("errFoto", true);
     return VerificarValidacionesLogin();
 }
 // FUNCIONES INDEX 
@@ -109,3 +113,9 @@ function VerificarValidacionesLogin() {
     return true;
 }
 //FUNCIONES LOGIN END
+// FUNCION MOSTRAR PHP
+function AdministrarModificar(dni) {
+    document.getElementById('hdnEnviar').setAttribute('value', dni.toString());
+    document.getElementById('hdnForm').submit();
+}
+//FUNCION MOSTRAR PHP END

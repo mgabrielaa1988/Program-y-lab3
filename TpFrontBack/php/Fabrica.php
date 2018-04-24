@@ -44,6 +44,7 @@ class Fabrica implements IArchivo
         else
         {
             unset($this->_empleados[$indice]);
+            unlink($emp->GetPathFoto());
             return true;
             
         }
@@ -54,6 +55,9 @@ class Fabrica implements IArchivo
         $this->_empleados=array_unique($this->_empleados);
     }
 
+    public function GetEmpleados(){
+        return $this->_empleados;
+    }
     public function ToString()
     {
         $numEmpleados=count($this->_empleados);
@@ -83,7 +87,9 @@ class Fabrica implements IArchivo
             if(trim($empString[0])!="")
             {
                 $empNuevo=new Empleado($empString[0],$empString[1],$empString[2],$empString[3],$empString[4],$empString[5],$empString[6]);
+                $empNuevo->SetPathFoto(trim($empString[7]."-".$empString[8]));
                 $this->AgregarEmpleado($empNuevo);
+               
             }
             
         }

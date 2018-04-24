@@ -46,6 +46,10 @@ function AdministrarValidaciones(): boolean {
         AdministrarSpanError("errSueldo", false);
     else
         AdministrarSpanError("errSueldo", true);
+    if ((<HTMLInputElement>document.getElementById('fileFoto')).value == "")
+        AdministrarSpanError("errFoto", false);
+    else
+        AdministrarSpanError("errFoto", true);
 
 
     return VerificarValidacionesLogin();
@@ -143,4 +147,15 @@ function VerificarValidacionesLogin(): boolean {
 
 
 //FUNCIONES LOGIN END
+
+// FUNCION MOSTRAR PHP
+
+function AdministrarModificar(dni: number): void {
+
+    (<HTMLInputElement>document.getElementById('hdnEnviar')).setAttribute('value', dni.toString());
+    (<HTMLFormElement>document.getElementById('hdnForm')).submit();
+}
+
+
+//FUNCION MOSTRAR PHP END
 
