@@ -1,16 +1,16 @@
 namespace Login{
 
-  
+    let xhttp:XMLHttpRequest=new XMLHttpRequest();
     export function ValidarUsuario():void
     {  
-        let xhttp:XMLHttpRequest=new XMLHttpRequest();
-
         var pass:string=(<HTMLInputElement>document.getElementById('iPass')).value;
         var usuario:string=(<HTMLInputElement>document.getElementById('iUsuario')).value;
 
         xhttp.onreadystatechange=function(){
-            if(xhttp.readyState == 4 && xhttp.status==200)
+            console.log(xhttp.responseText);
+            if(xhttp.readyState == 4 && xhttp.status == 200)
             {
+                
                 if(xhttp.responseText=="ok")
                 {
                     document.body.style.backgroundColor="green";
@@ -31,6 +31,35 @@ namespace Login{
 
     }
 
+    export function TraerTodos():void
+    {
+        xhttp.onreadystatechange=function()
+        {
+            if(xhttp.readyState==4 && xhttp.status==200)
+            {
+                if(xhttp.responseText!=null)
+                {
+                    (<HTMLDivElement>document.getElementById('mostrar')).innerHTML=xhttp.responseText;
+                }
+                else
+                {
+                    (<HTMLDivElement>document.getElementById('mostrar')).innerHTML="No se pudo traer los datos";
+                }
+                
+            }
+        }
+        xhttp.open("POST","./php/filtrar.php");
+        xhttp.setRequestHeader("content-type","application/x-www-form-urlencoded");
+        xhttp.send("orden=todos");
+    }
+    export function TraerPorNombre():void
+    {
+        
+    }
+    export function TraerArgentina():void
+    {
+        
+    }
 
 
 
