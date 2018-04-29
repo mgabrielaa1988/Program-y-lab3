@@ -25,7 +25,7 @@ var Login;
     function TraerTodos() {
         xhttp.onreadystatechange = function () {
             if (xhttp.readyState == 4 && xhttp.status == 200) {
-                if (xhttp.responseText != null) {
+                if (xhttp.responseText != "error") {
                     document.getElementById('mostrar').innerHTML = xhttp.responseText;
                 }
                 else {
@@ -39,9 +39,36 @@ var Login;
     }
     Login.TraerTodos = TraerTodos;
     function TraerPorNombre() {
+        var nombre = "Adriane";
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                if (xhttp.responseText == "error") {
+                    document.getElementById('mostrar').innerHTML = "No se pudo traer los datos";
+                }
+                else {
+                    document.getElementById('mostrar').innerHTML = xhttp.responseText;
+                }
+            }
+        };
+        xhttp.open("POST", "./php/filtrar.php");
+        xhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        xhttp.send("orden=pornombre&nombre=" + nombre);
     }
     Login.TraerPorNombre = TraerPorNombre;
     function TraerArgentina() {
+        xhttp.onreadystatechange = function () {
+            if (xhttp.readyState == 4 && xhttp.status == 200) {
+                if (xhttp.responseText == "error") {
+                    document.getElementById('mostrar').innerHTML = "No se pudo traer los datos";
+                }
+                else {
+                    document.getElementById('mostrar').innerHTML = xhttp.responseText;
+                }
+            }
+        };
+        xhttp.open("POST", "./php/filtrar.php");
+        xhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        xhttp.send("orden=argentina");
     }
     Login.TraerArgentina = TraerArgentina;
 })(Login || (Login = {}));

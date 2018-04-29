@@ -18,6 +18,7 @@ if(isset($_POST['iUsuario'],$_POST['iPass']))
      
     }
     fclose($archivo);
+    
     if(!$seEncontro)
     echo "error";
    
