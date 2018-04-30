@@ -3,14 +3,12 @@ session_start();
 require_once "php/Fabrica.php";
 require_once "php/Empleado.php";
 require_once "php/ValidarSesion.php";
-if(isset($_POST['dni']))
-{
-    $fabricaNueva=new Fabrica("La de vivir",7);
+if (isset($_POST['dni'])) {
+    $fabricaNueva = new Fabrica("La de vivir", 7);
     $fabricaNueva->TraerDeArchivo();
-    $empleados=$fabricaNueva->GetEmpleados();
+    $empleados = $fabricaNueva->GetEmpleados();
     foreach ($empleados as $emp) {
-        if($emp->GetDni()==$_POST['dni'])
-        {
+        if ($emp->GetDni() == $_POST['dni']) {
 
             ?>
 
@@ -42,7 +40,7 @@ if(isset($_POST['dni']))
             <tr>
                 <td>DNI:</td>
                 <td>
-                    <input type="number" id="txtDni" name="dni" <?php echo "value='".$emp->GetDni()."'"; ?> readonly>
+                    <input type="number" id="txtDni" name="dni" <?php echo "value='" . $emp->GetDni() . "'"; ?> readonly>
                 </td>
                 <td>
                     <span style="display:none" id="errDni">*</span>
@@ -51,7 +49,7 @@ if(isset($_POST['dni']))
             <tr>
                 <td>Apellido:</td>
                 <td>
-                    <input type="text" id="txtApellido" name="apellido" <?php echo "value='".$emp->GetApellido()."'";?>>
+                    <input type="text" id="txtApellido" name="apellido" <?php echo "value='" . $emp->GetApellido() . "'"; ?>>
                 </td>
                 <td>
                     <span style="display:none" id="errApellido">*</span>
@@ -60,7 +58,7 @@ if(isset($_POST['dni']))
             <tr>
                 <td>Nombre</td>
                 <td>
-                    <input type="text" id="txtNombre" name="nombre" <?php echo "value='".$emp->GetNombre()."'";?>>
+                    <input type="text" id="txtNombre" name="nombre" <?php echo "value='" . $emp->GetNombre() . "'"; ?>>
                 </td>
                 <td>
                     <span style="display:none" id="errNombre">*</span>
@@ -72,8 +70,8 @@ if(isset($_POST['dni']))
                 <td>
                     <select id="selGenero" name="genero">
                         <option value="default">Seleccione</option>
-                        <option value="Masculino" <?php if($emp->GetSexo()=="Masculino") echo "selected";?>>Masculino</option>
-                        <option value="Femenino"  <?php if($emp->GetSexo()=="Femenino") echo "selected";?>>Femenino</option>
+                        <option value="Masculino" <?php if ($emp->GetSexo() == "Masculino") echo "selected"; ?>>Masculino</option>
+                        <option value="Femenino"  <?php if ($emp->GetSexo() == "Femenino") echo "selected"; ?>>Femenino</option>
                     </select>
                 </td>
                 <td>
@@ -93,7 +91,7 @@ if(isset($_POST['dni']))
             <tr>
                 <td>Legajo</td>
                 <td>
-                    <input type="number" id="txtLegajo" name="legajo"<?php echo "value='".$emp->GetLegajo()."'";?> readonly>
+                    <input type="number" id="txtLegajo" name="legajo"<?php echo "value='" . $emp->GetLegajo() . "'"; ?> readonly>
                 </td>
                 <td>
                     <span style="display:none" id="errLegajo">*</span>
@@ -102,7 +100,7 @@ if(isset($_POST['dni']))
             <tr>
                 <td>Sueldo</td>
                 <td>
-                    <input type="number" id="txtSueldo" name="sueldo" step="500" <?php echo "value='".$emp->GetSueldo()."'";?>>
+                    <input type="number" id="txtSueldo" name="sueldo" step="500" <?php echo "value='" . $emp->GetSueldo() . "'"; ?>>
                 </td>
                 <td>
                     <span style="display:none" id="errSueldo">*</span>
@@ -113,15 +111,15 @@ if(isset($_POST['dni']))
             </tr>
             <tr>
                 <td>
-                    <input type="radio" id="tManiana" value="tManiana" name="turnos" <?php if($emp->GetTurno()=="tManiana") echo "checked";?>>Mañana</td>
+                    <input type="radio" id="tManiana" value="tManiana" name="turnos" <?php if ($emp->GetTurno() == "tManiana") echo "checked"; ?>>Mañana</td>
             </tr>
             <tr>
                 <td>
-                    <input type="radio" id="tTarde" value="tTarde" name="turnos" <?php if($emp->GetTurno()=="tTarde") echo "checked";?>>Tarde</td>
+                    <input type="radio" id="tTarde" value="tTarde" name="turnos" <?php if ($emp->GetTurno() == "tTarde") echo "checked"; ?>>Tarde</td>
             </tr>
             <tr>
                 <td>
-                    <input type="radio" id="tNoche" value="tNoche" name="turnos" <?php if($emp->GetTurno()=="tNoche") echo "checked";?>>Noche</td>
+                    <input type="radio" id="tNoche" value="tNoche" name="turnos" <?php if ($emp->GetTurno() == "tNoche") echo "checked"; ?>>Noche</td>
             </tr>
             <tr>
                 <td>
@@ -151,8 +149,8 @@ if(isset($_POST['dni']))
                 <td>
                     <input type="hidden" name="hdnModificar">
                     <?php 
-                    
-                    
+
+
                     ?>
                 </td>
             </tr>
@@ -161,12 +159,10 @@ if(isset($_POST['dni']))
 
     <?php
     break;
-        }
-    }
-
 }
-else
-{
+}
+
+} else {
     ?>
     <!DOCTYPE html>
 <html lang="en">
@@ -309,7 +305,8 @@ else
 
 </html>
 <?php
-    }
+
+}
 ?>
 </body>
 

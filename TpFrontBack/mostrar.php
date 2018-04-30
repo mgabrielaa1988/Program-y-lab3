@@ -4,12 +4,11 @@ require_once "php/Empleado.php";
 require_once "php/Fabrica.php";
 require_once "php/ValidarSesion.php";
 
-$fabrica=new Fabrica("La de vivir",7);
+$fabrica = new Fabrica("La de vivir", 7);
 $fabrica->TraerDeArchivo();
-$empleados=$fabrica->GetEmpleados();
+$empleados = $fabrica->GetEmpleados();
 
-foreach($empleados as $emp)
-{
+foreach ($empleados as $emp) {
     ?> 
 
 <!DOCTYPE html>
@@ -46,7 +45,7 @@ foreach($empleados as $emp)
             <a href="eliminar.php/?legajo= <?php echo $emp->GetLegajo() ?> ">Eliminar</a>
         </td>
         <td>
-            <input type="button" value="Modificar" onclick="AdministrarModificar(<?php echo $emp->GetDni()?>)">
+            <input type="button" value="Modificar" onclick="AdministrarModificar(<?php echo $emp->GetDni() ?>)">
         </td>
         <td>
           <form action="index.php" id="hdnForm" method="POST">
@@ -55,6 +54,7 @@ foreach($empleados as $emp)
         </td>
     </tr>
 <?php
+
 }
 ?>
 <!-- TERMINA PHP-->
