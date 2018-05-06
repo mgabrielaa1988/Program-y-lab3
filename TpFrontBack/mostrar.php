@@ -6,6 +6,7 @@ require_once "php/ValidarSesion.php";
 
 $fabrica = new Fabrica("La de vivir", 7);
 $fabrica->TraerDeArchivo();
+
 $empleados = $fabrica->GetEmpleados();
 
 foreach ($empleados as $emp) {
@@ -37,15 +38,15 @@ foreach ($empleados as $emp) {
             <?php echo $emp->ToString() ?>
         </td>
         <td>
-            <img src="<?php echo $emp->GetPathFoto() ?>"
-            alt=" <?php echo $emp->GetApellido() ?>"
+            <img src="<?php echo $emp->GetPathFoto(); ?>"
+            alt=" <?php echo $emp->GetApellido(); ?>"
             style="width:90px;height:90px;">
         </td>
         <td>
             <a href="eliminar.php/?legajo= <?php echo $emp->GetLegajo() ?> ">Eliminar</a>
         </td>
         <td>
-            <input type="button" value="Modificar" onclick="AdministrarModificar(<?php echo $emp->GetDni() ?>)">
+            <input type="button" value="Modificar" onclick="AdministrarModificar(<?php echo $emp->GetDni(); ?>)">
         </td>
         <td>
           <form action="index.php" id="hdnForm" method="POST">
