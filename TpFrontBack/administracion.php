@@ -3,8 +3,7 @@ require_once("php/Fabrica.php");
 require_once("php/Empleado.php");
 
 $archivoInfo = pathinfo($_FILES['foto']['name']);
-echo filesize($archivoInfo['name']);
-echo $archivoInfo['size'];
+
 if ($archivoInfo['extension'] != 'jpg' &&
     $archivoInfo['extension'] != 'png' &&
     $archivoInfo['extension'] != 'jpeg' &&
@@ -47,4 +46,6 @@ if ($archivoInfo['extension'] != 'jpg' &&
 }
 
 }
+}
+
 ?>
