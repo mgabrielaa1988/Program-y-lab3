@@ -25,12 +25,13 @@ $app = new \Slim\App(["settings" => $config]);
 $app->group('/DB', function () {
 
     $this->any('/', function (Request $request, Response $response) {
-        $response->getBody()->write('Saludos <br> !');
+        $response->getBody()->write('Saludos <br>');
         return $response;
     })->add(\Middlewares::class . ':CalcularTiempo');
 
 })->add(\Middlewares::class . ':FuncionesAdmin');;
 
 $app->add(\Middlewares::class . ':VerificarUsuario');
+
 $app->run();
 ?>
