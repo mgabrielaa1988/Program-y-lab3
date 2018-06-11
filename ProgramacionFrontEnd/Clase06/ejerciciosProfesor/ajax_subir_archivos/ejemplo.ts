@@ -35,7 +35,12 @@ function SubirFoto() : void {
     xhr.setRequestHeader("enctype", "multipart/form-data");
 
     //ENVIO DE LA PETICION
+<<<<<<< HEAD
     xhr.send(form);
+=======
+    let codigo=(<HTMLInputElement>document.getElementById('txtCodigo')).value;
+    xhr.send(form+"codigo="+codigo);
+>>>>>>> 102937be68bba71e6c1923a8b9040f374c8251a6
 
     //FUNCION CALLBACK
     xhr.onreadystatechange = () => {
