@@ -1,0 +1,2 @@
+En la carpeta original, todo el trabajo esta con scripts referenciando a la web de bootstrap, etc
+En la carpeta mod, esta todo referenciado para trabajar de forma local, con el bower descargado
