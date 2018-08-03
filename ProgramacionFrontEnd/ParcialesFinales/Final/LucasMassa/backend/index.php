@@ -19,7 +19,7 @@ $app->group('/login', function () {
             "correo" => $params['correo'],
             "clave" => $params['clave'],
             "iat" => $fecha,
-            "exp" => $fecha + 15
+            "exp" => $fecha + 15000
         );
         $jwt = JWT::encode($payload, $key);
         http_response_code(200);

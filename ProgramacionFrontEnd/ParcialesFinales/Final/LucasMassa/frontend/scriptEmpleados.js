@@ -28,11 +28,11 @@ window.onload = function () {
                     var local_usuarios = local_usuarios_original.usuarios;
                     local_usuarios.forEach(function (element) {
                         if (correoLogeado == element.correo) {
-                            console.log(" Correo encontrado: " + element.correo + "\n");
+                            console.log(" Logeado como: " + element.perfil);
                             respuesta_1 = element.perfil;
                         }
                     });
-                    if (respuesta_1 == 'empleado' || respuesta_1 == 'encargado') {
+                    if (respuesta_1 == 'empleado') {
                         var stringTabla_1 = "<table class='table'><th>Nombre</th><th>Apellido</th><th>Correo</th><th>Legajo</th><th>Clave</th><th>Perfil</th><th>Foto</th>";
                         local_usuarios.forEach(function (empleado) {
                             stringTabla_1 += "<tr><td>" + empleado.nombre + "</td><td>" + empleado.apellido + "</td><td>" + empleado.correo + "</td><td>" + empleado.legajo + "</td><td>" + empleado.clave + "</td><td>" + empleado.perfil + "</td><td><img class='img-thumbnail' width='50px' height='50px' src='../backend" + empleado.foto + "' alt='" + empleado.foto + "'></td></tr>";
@@ -40,13 +40,26 @@ window.onload = function () {
                         stringTabla_1 += "</table>";
                         document.getElementById('laTabla').innerHTML += stringTabla_1;
                     }
-                    else if (respuesta_1 == 'propietario') {
-                        var stringTabla_2 = "<table class='table'><th>Nombre</th><th>Apellido</th><th>Correo</th><th>Legajo</th><th>Clave</th><th>Perfil</th><th>Foto</th><th>Eliminar</th><th>Modificar</th>";
+                    else if (respuesta_1 == 'encargado') {
+                        var stringTabla_2 = "<table class='table'><th>Nombre</th><th>Apellido</th><th>Correo</th><th>Legajo</th><th>Clave</th><th>Perfil</th><th>Foto</th><th>Modificar</th>";
                         local_usuarios.forEach(function (empleado) {
-                            stringTabla_2 += "<tr><td>" + empleado.nombre + "</td><td>" + empleado.apellido + "</td><td>" + empleado.correo + "</td><td>" + empleado.legajo + "</td><td>" + empleado.clave + "</td><td>" + empleado.perfil + "</td><td><img class='img-thumbnail' width='50px' height='50px' src='../backend" + empleado.foto + "' alt='" + empleado.foto + "'></td><td><a class='btn btn-danger text-light' data-toggle='modal' data-target='#formulario' onclick='Test.Manejadora.EliminarEmpleado(" + JSON.stringify(empleado) + ")'>Eliminar</a></td><td><a class='btn btn-warning text-light' data-toggle='modal' data-target='#formulario' onclick='Test.Manejadora.Modificar(" + JSON.stringify(empleado) + ")'>Modificar</a></td></tr>";
+                            if (empleado.perfil == 'propietario') {
+                                stringTabla_2 += "<tr><td>" + empleado.nombre + "</td><td>" + empleado.apellido + "</td><td>" + empleado.correo + "</td><td>" + empleado.legajo + "</td><td>" + empleado.clave + "</td><td>" + empleado.perfil + "</td><td><img class='img-thumbnail' width='50px' height='50px' src='../backend" + empleado.foto + "' alt='" + empleado.foto + "'></td><td>No se puede modificar</td></tr>";
+                            }
+                            else {
+                                stringTabla_2 += "<tr><td>" + empleado.nombre + "</td><td>" + empleado.apellido + "</td><td>" + empleado.correo + "</td><td>" + empleado.legajo + "</td><td>" + empleado.clave + "</td><td>" + empleado.perfil + "</td><td><img class='img-thumbnail' width='50px' height='50px' src='../backend" + empleado.foto + "' alt='" + empleado.foto + "'></td><td><a class='btn btn-warning text-light' data-toggle='modal' data-target='#formulario' onclick='Test.Manejadora.EnviarFormModificar(" + JSON.stringify(empleado) + ")'>Modificar</a></td></tr>";
+                            }
                         });
                         stringTabla_2 += "</table>";
                         document.getElementById('laTabla').innerHTML += stringTabla_2;
+                    }
+                    else if (respuesta_1 == 'propietario') {
+                        var stringTabla_3 = "<table class='table'><th>Nombre</th><th>Apellido</th><th>Correo</th><th>Legajo</th><th>Clave</th><th>Perfil</th><th>Foto</th><th>Eliminar</th><th>Modificar</th>";
+                        local_usuarios.forEach(function (empleado) {
+                            stringTabla_3 += "<tr><td>" + empleado.nombre + "</td><td>" + empleado.apellido + "</td><td>" + empleado.correo + "</td><td>" + empleado.legajo + "</td><td>" + empleado.clave + "</td><td>" + empleado.perfil + "</td><td><img class='img-thumbnail' width='50px' height='50px' src='../backend" + empleado.foto + "' alt='" + empleado.foto + "'></td><td><a class='btn btn-danger text-light' data-toggle='modal' data-target='#formulario' onclick='Test.Manejadora.EliminarEmpleado(" + JSON.stringify(empleado) + ")'>Eliminar</a></td><td><a class='btn btn-warning text-light' data-toggle='modal' data-target='#formulario' onclick='Test.Manejadora.EnviarFormModificar(" + JSON.stringify(empleado) + ")'>Modificar</a></td></tr>";
+                        });
+                        stringTabla_3 += "</table>";
+                        document.getElementById('laTabla').innerHTML += stringTabla_3;
                     }
                     else {
                         alert('No se tiene el perfil para mostrar el listado.');

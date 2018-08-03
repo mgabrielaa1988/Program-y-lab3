@@ -297,9 +297,10 @@ var Test;
                 var formData = new FormData();
                 formData.append('correo', correo);
                 formData.append('legajo', legajo);
+                formData.append('caso', 'agregar');
                 formData.append('foto', foto.files[0]);
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "../backend/altaRegistro.php", true);
+                xmlhttp.open("POST", "../backend/administrarRequest.php", true);
                 xmlhttp.setRequestHeader("enctype", "multipart/form-data");
                 xmlhttp.send(formData);
                 xmlhttp.onreadystatechange = function () {
@@ -339,6 +340,7 @@ var Test;
             if (!seEncontro) {
                 alert('Usuario o contraseña incorrectos');
                 window.location.assign('./home.html');
+                return;
             }
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.open("POST", "../backend/login/", true);
@@ -353,32 +355,6 @@ var Test;
                         window.location.assign('./principal.html');
                     }
                 }
-            };
-        };
-        Manejadora.Modificar = function (objJson) {
-            window.location.assign('./registro.php');
-            window.onload = function () {
-                document.getElementById('nombre').value = objJson.nombre;
-                document.getElementById('apellido').value = objJson.apellido;
-                document.getElementById('correo').value = objJson.correo;
-                document.getElementById('legajo').value = objJson.legajo;
-                document.getElementById('talle').value = objJson.talle;
-                document.getElementById('precio').value = objJson.precio;
-                document.getElementById('clave').value = objJson.talle;
-                document.getElementById('precio').value = objJson.precio;
-                document.getElementById('id').readOnly = true;
-                document.getElementById('marca').readOnly = false;
-                document.getElementById('color').readOnly = false;
-                document.getElementById('talle').readOnly = false;
-                document.getElementById('precio').readOnly = false;
-                //(<HTMLInputElement>document.getElementById('imagen')).src="../backend.1/"+objJson.foto;
-                //(<HTMLInputElement>document.getElementById('archivo')).hidden=false;
-                //(<HTMLInputElement>document.getElementById('imagen')).hidden=false;
-                document.getElementById('divId').hidden = false;
-                document.getElementById('boton-agregar').hidden = true;
-                document.getElementById('boton-modificar').hidden = false;
-                document.getElementById('boton-borrar').hidden = true;
-                console.log(objJson);
             };
         };
         Manejadora.LimpiarForm = function () {
@@ -414,6 +390,7 @@ var Test;
                 return;
             }
             var usuariosLocales = localStorage.getItem("JWTKey");
+            var ruta = "";
             if (usuariosLocales) {
                 var local_usuarios_original_1 = JSON.parse(usuariosLocales);
                 var local_usuarios = local_usuarios_original_1.usuarios;
@@ -422,12 +399,15 @@ var Test;
                     if (correo != element.correo) {
                         local_usuarios_original_1.usuarios.push(element);
                     }
+                    else {
+                        ruta = element.foto;
+                    }
                 });
                 console.log(local_usuarios_original_1);
                 var xmlhttp = new XMLHttpRequest();
-                xmlhttp.open("POST", "../backend/eliminarUsuario.php", true);
+                xmlhttp.open("POST", "../backend/administrarRequest.php", true);
                 xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-                xmlhttp.send("correo=" + correo + "&legajo=" + legajo);
+                xmlhttp.send("correo=" + correo + "&legajo=" + legajo + '&caso=eliminar' + "&ruta=" + ruta);
                 xmlhttp.onreadystatechange = function () {
                     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
                         if (xmlhttp.responseText != "error") {
@@ -441,6 +421,200 @@ var Test;
                         }
                     }
                 };
+            }
+        };
+        Manejadora.EnviarFormModificar = function (objJson) {
+            var correo = objJson.correo;
+            var legajo = objJson.legajo;
+            var r = confirm("Desea modificar a " + objJson.apellido + " " + objJson.nombre + "?");
+            if (r == false) {
+                return;
+            }
+            document.getElementById('datosModificar').value = objJson.correo;
+            document.getElementById('formEnviar').submit();
+        };
+        Manejadora.ModificarEmpleado = function () {
+            var nombre = document.getElementById('nombre').value;
+            var apellido = document.getElementById('apellido').value;
+            var clave = document.getElementById('clave').value;
+            var correo = document.getElementById('correo').value;
+            var perfil = document.getElementById('perfil').value;
+            var foto = document.getElementById('foto');
+            var legajo = document.getElementById('legajo').value;
+            var rutaOrig = "";
+            var ruta = "/fotos/modificados/" + correo + "-" + legajo + ".jpg";
+            var itemLocal = localStorage.getItem("JWTKey");
+            if (itemLocal) {
+                var jsonLocal = JSON.parse(itemLocal);
+                var jsonNuevo_1 = { usuarios: [] };
+                jsonLocal.usuarios.forEach(function (element) {
+                    if (correo != element.correo) {
+                        jsonNuevo_1.usuarios.push(element);
+                    }
+                    else {
+                        rutaOrig = element.foto;
+                        element.nombre = nombre;
+                        element.apellido = apellido;
+                        element.clave = clave;
+                        element.perfil = perfil;
+                        element.foto = ruta;
+                        jsonNuevo_1.usuarios.push(element);
+                    }
+                });
+                console.log(jsonNuevo_1);
+                console.log(rutaOrig);
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("POST", "../backend/administrarRequest.php", true);
+                if (foto.value == '') {
+                    xmlhttp.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+                    xmlhttp.send("correo=" + correo + "&legajo=" + legajo + '&caso=modificar' + "&ruta=" + rutaOrig);
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            if (xmlhttp.responseText != 'error') {
+                                localStorage.removeItem("JWTKey");
+                                localStorage.setItem("JWTKey", JSON.stringify(jsonNuevo_1));
+                                alert('Usuario modificado');
+                                window.location.assign('principal.html');
+                            }
+                            else {
+                                alert('No se pudo modificar');
+                                window.location.assign('principal.html');
+                            }
+                        }
+                    };
+                }
+                else {
+                    xmlhttp.setRequestHeader("enctype", "multipart/form-data");
+                    var formData = new FormData();
+                    formData.append('correo', correo);
+                    formData.append('legajo', legajo);
+                    formData.append('caso', 'modificarNuevaFoto');
+                    formData.append('ruta', rutaOrig);
+                    formData.append('foto', foto.files[0]);
+                    xmlhttp.send(formData);
+                    xmlhttp.onreadystatechange = function () {
+                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                            if (xmlhttp.responseText != 'error') {
+                                console.log(xmlhttp.responseText);
+                                localStorage.removeItem("JWTKey");
+                                localStorage.setItem("JWTKey", JSON.stringify(jsonNuevo_1));
+                                alert('Usuario modificado con nueva foto');
+                                window.location.assign('principal.html');
+                            }
+                            else {
+                                alert('No se pudo modificar');
+                                window.location.assign('principal.html');
+                            }
+                        }
+                    };
+                }
+            }
+        };
+        Manejadora.AgregarProducto = function () {
+            var marca = document.getElementById('marca').value;
+            var color = document.getElementById('color').value;
+            var talle = document.getElementById('talle').value;
+            var precio = document.getElementById('precio').value;
+            var id = document.getElementById('id').value;
+            var productoJson = {
+                "marca": marca,
+                "color": color,
+                "talle": talle,
+                "precio": precio,
+                "id": id
+            };
+            var seEncontro = false;
+            var jsonItem;
+            var itemLocal = localStorage.getItem("Productos");
+            if (itemLocal) {
+                jsonItem = JSON.parse(itemLocal);
+                jsonItem.productos.forEach(function (producto) {
+                    console.log(producto);
+                    if (producto.id == id) {
+                        alert('El producto ya esta registrado');
+                        seEncontro = true;
+                        window.location.reload();
+                    }
+                });
+            }
+            if (!seEncontro) {
+                jsonItem.productos.push(productoJson);
+                alert('Se agrego el producto!');
+                window.location.reload();
+                localStorage.setItem("Productos", JSON.stringify(jsonItem));
+            }
+        };
+        Manejadora.PrepararModificarProducto = function (objJson) {
+            document.getElementById('boton-agregar').hidden = true;
+            document.getElementById('boton-modificar').hidden = false;
+            document.getElementById('boton-borrar').hidden = true;
+            document.getElementById('id').value = objJson.id;
+            document.getElementById('boton-modificar').setAttribute('onclick', 'Test.Manejadora.ModificarProducto(' + JSON.stringify(objJson) + ')');
+            document.getElementById('formularioLabel').innerText = "Modificar";
+            document.getElementById('marca').value = objJson.marca;
+            document.getElementById('color').value = objJson.color;
+            document.getElementById('talle').value = objJson.talle;
+            document.getElementById('precio').value = objJson.precio;
+            document.getElementById('id').readOnly = true;
+            document.getElementById('marca').readOnly = false;
+            document.getElementById('color').readOnly = false;
+            document.getElementById('talle').readOnly = false;
+            document.getElementById('precio').readOnly = false;
+            document.getElementById('divId').hidden = false;
+        };
+        Manejadora.ModificarProducto = function (prodJson) {
+            var marca = document.getElementById('marca').value;
+            var color = document.getElementById('color').value;
+            var talle = document.getElementById('talle').value;
+            var precio = document.getElementById('precio').value;
+            var idModif = document.getElementById('id').value;
+            var id = prodJson.id;
+            var r = confirm("Desea modificar a " + prodJson.marca + " [" + prodJson.id + "]");
+            if (r == false) {
+                return;
+            }
+            var itemLocal = localStorage.getItem("Productos");
+            localStorage.removeItem("Productos");
+            if (itemLocal) {
+                var jsonItem = JSON.parse(itemLocal);
+                var jsonFinal_1 = { productos: [] };
+                jsonItem.productos.forEach(function (producto) {
+                    if (id != producto.id) {
+                        jsonFinal_1.productos.push(producto);
+                    }
+                    else {
+                        producto.marca = marca;
+                        producto.color = color;
+                        producto.talle = talle;
+                        producto.precio = precio;
+                        producto.id = idModif;
+                        jsonFinal_1.productos.push(producto);
+                    }
+                });
+                localStorage.setItem("Productos", JSON.stringify(jsonFinal_1));
+                alert('Producto modificado');
+                window.location.reload();
+            }
+        };
+        Manejadora.BorrarProducto = function (prodJson) {
+            var id = prodJson.id;
+            var r = confirm("Desea borrar a " + prodJson.marca + " [" + prodJson.id + "]");
+            if (r == false) {
+                return;
+            }
+            var itemLocal = localStorage.getItem("Productos");
+            localStorage.removeItem("Productos");
+            if (itemLocal) {
+                var jsonItem = JSON.parse(itemLocal);
+                var jsonFinal_2 = { productos: [] };
+                jsonItem.productos.forEach(function (producto) {
+                    if (id != producto.id) {
+                        jsonFinal_2.productos.push(producto);
+                    }
+                });
+                localStorage.setItem("Productos", JSON.stringify(jsonFinal_2));
+                alert('Producto eliminado');
+                window.location.reload();
             }
         };
         return Manejadora;

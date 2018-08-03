@@ -25,8 +25,12 @@
   <div class="container-fluid" id="laTabla">
     <h2 class="display-4 text-center">Listado de Usuarios</h2>
     <div class="row justify-content-center mb-3">
-      <button type="button" class="btn btn-danger" onclick="Test.Manejadora.Deslogear()">Deslogearse</button>
+      <a href="./productos.html" type="button" class="btn btn-primary mr-3" onclick="">Ir a productos</a>
+        <button type="button" class="btn btn-danger" onclick="Test.Manejadora.Deslogear()">Deslogearse</button>
     </div>
+    <form method="POST" id="formEnviar" action="./modificar.php">
+      <input type="text" hidden id='datosModificar' name='correo'>
+    </form>
   </div>
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
